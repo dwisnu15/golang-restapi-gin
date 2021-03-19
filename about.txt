@@ -1,0 +1,17 @@
+1. Set your PostgreSQL database : https://computingforgeeks.com/install-postgresql-12-on-ubuntu/
+    Don't forget to turn it on. Remember its port as you will use it to connect
+2. Done, create new project for basic gin API
+3. Project structure has at least the following : controller dir, models dir
+4. Install dependencies : gin-gonic, golang GORM, postgre driver (pq lib)
+5. create your model. Usually entities within your database, and its DAO
+6. Setup your database (initialization, error handling, GORM, ...). Use GORM for object mapper for your database entities
+7. Create controller for your entities. The norm is at least CRUD functions
+7.1. Maybe use Viper?
+7.2. configure your datasource, i cannot stress this enough
+8. Initialize the DB connection which uses GORM.
+9. Set your Router so it will use Gin. You may modify Gin as long as it follows your GORM rules
+10. Set Router's routes in accordance to your controller's function(s).
+11. Start the router
+12. Do request
+
+I need validator on input
