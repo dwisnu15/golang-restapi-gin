@@ -1,8 +1,7 @@
-package models
+package configs
 
 //this file concerns setting up the database connection
 import (
-	c "GinAPI/configs"
 	"database/sql"
 	"fmt"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
@@ -39,7 +38,7 @@ func InitViperConfig() {
 	//set path to look for config file (in: GinAPI)
 
 	viper.SetConfigType("yml")
-	var configurations c.Configurations
+	var configurations Configurations
 
 	if err := viper.ReadInConfig(); err != nil {
 		log.Fatalf("Error reading config file, %s", err)

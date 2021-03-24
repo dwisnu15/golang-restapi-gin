@@ -1,11 +1,14 @@
 package main
 
 import (
-	"GinAPI/controllers"
+	"GinAPI/configs"
+	repository "GinAPI/repositories"
+	controller "GinAPI/controllers"
+	service "GinAPI/services"
 	"GinAPI/middlewares"
-	"GinAPI/models"
 	"fmt"
 	"github.com/gin-gonic/gin"
+	log "github.com/sirupsen/logrus"
 	"os"
 	"time"
 )
@@ -15,22 +18,17 @@ func main() {
 	os.Setenv("TZ", "Asia/Jakarta")
 	fmt.Printf("Started at : %3v \n", time.Now())
 
-	models.InitDBConnection()
-	defer models.DB.Close()
+	db :=configs.InitDBConnection()
+	itemsRepo := repository.InitItemRepo(db)
+	itemsService := service.CreateItemsService(itemsRepo)
 
-	gin.SetMode(gin.ReleaseMode)
 	router := gin.Default()
-	//var log = logrus.New()
-	//router.Use(middlewares.Logger(log))
-
-	api := router.Group("/api")
-	api.Use(middlewares.Logger())
-	api.GET("/items", controllers.ListAllItems)//tested
-	api.GET("/items/:id", controllers.FindItemById)//tested
-	api.POST("/items", controllers.InsertItem)//tested
-	api.DELETE("/items/:id", controllers.DeleteItem)//tested
-	api.PATCH("/items/:id", controllers.PatchItem)//tested
-	router.Run(":8080")
+	router.Use(middlewares.Logger())
+	controller.InitItemsController(router, itemsService)
+	err := router.Run(":8080")
+	if err != nil {
+		log.Fatal(err)
+	}
 
 }
 

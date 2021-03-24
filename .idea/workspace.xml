@@ -1,7 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0ca0186f-406a-457e-96ad-ca2c9b80611a" name="Default Changelist" comment="" />
+    <list default="true" id="0ca0186f-406a-457e-96ad-ca2c9b80611a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/repositories/items_repo_impl.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/items_service_impl.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/03222e04-5357-42aa-a550-7a96cc8ce473.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/03222e04-5357-42aa-a550-7a96cc8ce473.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/03222e04-5357-42aa-a550-7a96cc8ce473/storage_v2/_src_/database/gin_framework.Sy2o4A/schema/basic_gin.O8y9mg.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/03222e04-5357-42aa-a550-7a96cc8ce473/storage_v2/_src_/database/gin_framework.Sy2o4A/schema/basic_gin.O8y9mg.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/03222e04-5357-42aa-a550-7a96cc8ce473/storage_v2/_src_/database/gin_framework.Sy2o4A/schema/information_schema.FNRwLQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/03222e04-5357-42aa-a550-7a96cc8ce473/storage_v2/_src_/database/gin_framework.Sy2o4A/schema/information_schema.FNRwLQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/03222e04-5357-42aa-a550-7a96cc8ce473/storage_v2/_src_/database/gin_framework.Sy2o4A/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/03222e04-5357-42aa-a550-7a96cc8ce473/storage_v2/_src_/database/gin_framework.Sy2o4A/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/03222e04-5357-42aa-a550-7a96cc8ce473/storage_v2/_src_/database/gin_framework.Sy2o4A/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/03222e04-5357-42aa-a550-7a96cc8ce473/storage_v2/_src_/database/gin_framework.Sy2o4A/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configs/adminaccounts.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/items.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/items_controller.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middlewares/logger.go" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/logger.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middlewares/middleware.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/middlewares/recovery.go" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/recovery.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/dbsetup.go" beforeDir="false" afterPath="$PROJECT_DIR$/configs/dbconfig.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/items.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/items_model.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repositories/items_repo.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/itemsService.go" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,6 +40,14 @@
     </option>
   </component>
   <component name="GOROOT" url="file:///usr/lib/go-1.13" />
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
       <filtered-out-file-type name="LOCAL_BRANCH" />
@@ -25,6 +57,7 @@
     </file-type-list>
   </component>
   <component name="ProjectId" id="1pprmqfdUnh632sXC3f7hxyJvTs" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -37,13 +70,72 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Repo/pak_edo/Golang/golang-simpleSql" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/configs" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="GoAppEngineRunConfiguration" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Go Test.TestItemsRepoImpl_FindItemByID in GinAPI/repositories">
+    <configuration name="TestItemsRepoImpl_FindAllItem in GinAPI/repositories" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="GinAPI" />
+      <working_directory value="$PROJECT_DIR$/repositories" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="GinAPI/repositories" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTestItemsRepoImpl_FindAllItem\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestItemsRepoImpl_FindItemByID in GinAPI/repositories" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="GinAPI" />
+      <working_directory value="$PROJECT_DIR$/repositories" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="GinAPI/repositories" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTestItemsRepoImpl_FindItemByID\E$" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Test.TestItemsRepoImpl_FindItemByID in GinAPI/repositories" />
+        <item itemvalue="Go Test.TestItemsRepoImpl_FindAllItem in GinAPI/repositories" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/GinAPI$TestItemsRepoImpl_FindAllItem_in_GinAPI_repositories.out" NAME="TestItemsRepoImpl_FindAllItem in GinAPI/repositories Coverage Results" MODIFIED="1616545594079" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/GinAPI$TestItemsRepoImpl_FindItemByID_in_GinAPI_repositories.out" NAME="TestItemsRepoImpl_FindItemByID in GinAPI/repositories Coverage Results" MODIFIED="1616545801056" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
