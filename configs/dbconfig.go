@@ -12,16 +12,6 @@ import (
 )
 
 
-//should you turn this into env?
-//i used viper for configurations, works well
-//const (
-//	host = "localhost"
-//	port = 5432
-//	user = "testadmin"
-//	dbname = "gin_framework"
-//	pass = "enigma"
-//)
-
 //var GormDB *gorm.DB
 var DB *sql.DB
 

@@ -2,29 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0ca0186f-406a-457e-96ad-ca2c9b80611a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/repositories/items_repo_impl.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/items_service_impl.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/03222e04-5357-42aa-a550-7a96cc8ce473.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/03222e04-5357-42aa-a550-7a96cc8ce473.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/03222e04-5357-42aa-a550-7a96cc8ce473/storage_v2/_src_/database/gin_framework.Sy2o4A/schema/basic_gin.O8y9mg.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/03222e04-5357-42aa-a550-7a96cc8ce473/storage_v2/_src_/database/gin_framework.Sy2o4A/schema/basic_gin.O8y9mg.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/03222e04-5357-42aa-a550-7a96cc8ce473/storage_v2/_src_/database/gin_framework.Sy2o4A/schema/information_schema.FNRwLQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/03222e04-5357-42aa-a550-7a96cc8ce473/storage_v2/_src_/database/gin_framework.Sy2o4A/schema/information_schema.FNRwLQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/03222e04-5357-42aa-a550-7a96cc8ce473/storage_v2/_src_/database/gin_framework.Sy2o4A/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/03222e04-5357-42aa-a550-7a96cc8ce473/storage_v2/_src_/database/gin_framework.Sy2o4A/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/03222e04-5357-42aa-a550-7a96cc8ce473/storage_v2/_src_/database/gin_framework.Sy2o4A/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/03222e04-5357-42aa-a550-7a96cc8ce473/storage_v2/_src_/database/gin_framework.Sy2o4A/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configs/adminaccounts.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/items.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/items_controller.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configs/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/configs/config.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configs/dbconfig.go" beforeDir="false" afterPath="$PROJECT_DIR$/configs/dbconfig.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configs/dbconfig.yml" beforeDir="false" afterPath="$PROJECT_DIR$/configs/dbconfig.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/items_controller.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/items_controller.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/order.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middlewares/logger.go" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/logger.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middlewares/middleware.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/middlewares/recovery.go" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/recovery.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/dbsetup.go" beforeDir="false" afterPath="$PROJECT_DIR$/configs/dbconfig.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/items.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/items_model.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middlewares/authmiddleware.go" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/authmiddleware.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/apperrors/apperrors.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/apperrors/apperrors.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/repositories/items_repo.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/itemsService.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/repositories/items_repo_impl.go" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/items_repo_impl.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/items_service.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/items_service_impl.go" beforeDir="false" afterPath="$PROJECT_DIR$/services/items_service_impl.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +60,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Repo/others/memrizr" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">

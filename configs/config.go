@@ -1,5 +1,7 @@
 package configs
 
+import "github.com/gin-gonic/gin"
+
 //exported configurations
 type Configurations struct {
 	Server ServerConfigs
@@ -17,4 +19,9 @@ type DatabaseConfigs struct {
 	DBName string
 	DBUser string
 	DBPassword string
+}
+
+type Controller struct {
+	R *gin.Engine
+
 }

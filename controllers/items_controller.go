@@ -2,7 +2,9 @@ package controllers
 
 import (
 	"GinAPI/constants"
+	"GinAPI/middlewares"
 	"GinAPI/models"
+	"GinAPI/models/apperrors"
 	service "GinAPI/services"
 	"GinAPI/util"
 	"database/sql"
@@ -10,6 +12,7 @@ import (
 	_ "github.com/lib/pq"
 	log "github.com/sirupsen/logrus"
 	"net/http"
+	"time"
 )
 
 //insert, update should return the resulting row,
@@ -19,17 +22,38 @@ import (
 
 type ItemsController struct {
 	itemsService service.ItemsService
+	MaxBodyBytes int64
 }
 
-func InitItemsController(r *gin.Engine, itemsService service.ItemsService) {
-	itemsController := ItemsController{itemsService}
-	api := r.Group("/api")
-	api.GET("/items", itemsController.listAllItems)//tested
-	api.GET("/items/:id", itemsController.findItemById)//tested
-	api.POST("/items", itemsController.insertItem)//tested
-	api.DELETE("/items/:id", itemsController.deleteItemById)//tested
-	api.PATCH("/items/:id", itemsController.patchItem)//tested
+type ItemsContrConfig struct {
+	R               *gin.Engine
+	ItemsService    service.ItemsService
+	BaseURL         string
+	TimeoutDuration time.Duration
+	MaxBodyBytes    int64
 }
+
+func InitItemsController(icConfig *ItemsContrConfig) {
+	itemscontr := &ItemsController{
+		itemsService: icConfig.ItemsService,
+		MaxBodyBytes: icConfig.MaxBodyBytes,
+	}
+
+	group := icConfig.R.Group(icConfig.BaseURL)// /api
+	group.Use(middlewares.TimeoutHandler(icConfig.TimeoutDuration, apperrors.NewServiceUnavailable()))
+	if gin.Mode() != gin.TestMode {
+		//with token authorization
+	} else {
+		//for general testing and the like
+		group.POST("/items", itemscontr.insertItem)           //tested
+		group.DELETE("/items/:id", itemscontr.deleteItemById) //tested
+		group.PATCH("/items/:id", itemscontr.patchItem)       //tested
+	}
+	group.GET("/items", itemscontr.listAllItems)          //tested
+	group.GET("/items/:id", itemscontr.findItemById)      //tested
+
+}
+
 func (e *ItemsController) listAllItems(c *gin.Context) {
 	listitems, err := e.itemsService.FindAllItem()
 	if err != nil {
@@ -110,7 +134,7 @@ func (e *ItemsController) patchItem(c *gin.Context) {
 		return
 	}
 	//check whether one of request body field is nil
-	if input.Name == ""  {
+	if input.Name == "" {
 		log.Info("entered input name checking")
 		input.Name = item.Name
 	}
@@ -138,7 +162,7 @@ func (e *ItemsController) patchItem(c *gin.Context) {
 func (e *ItemsController) deleteItemById(c *gin.Context) {
 	//find the to-be-deleted data's id
 	id := util.GetInt64IdFromContext(c)
-	result:= e.itemsService.DeleteItem(id)
+	result := e.itemsService.DeleteItem(id)
 	if !result {
 		util.HandleFailure(c, http.StatusInternalServerError, constants.ServerError)
 		return

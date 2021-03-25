@@ -12,6 +12,14 @@ import (
 	"strings"
 )
 
+type ItemsRepo interface {
+	FindAllItem() (*[]models.Items, error)
+	FindItemByID(itemID int64) (*models.Items, error)
+	InsertItem(newItem *models.CreateItemInput) bool
+	UpdateItem(itemID int64, update *models.UpdateItemInput) bool
+	DeleteItem(itemID int64) bool
+}
+
 type ItemsRepoImpl struct {
 	db *sql.DB
 }
