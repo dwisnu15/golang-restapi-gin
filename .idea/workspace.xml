@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0ca0186f-406a-457e-96ad-ca2c9b80611a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/middlewares/csrfprotect.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repositories/items_repo_impl.go" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/items_repo_impl.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repositories/items_repo_impl_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/items_repo_impl_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mocks/service/item_service_mock.go" beforeDir="false" afterPath="$PROJECT_DIR$/mocks/service/item_service_mock.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,38 +64,27 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Go Test.TestItemsServiceImpl_FindItemByID/Should_return_data in GinAPI/services">
-    <configuration name="TestItemsRepoImpl_DeleteItem in GinAPI/repositories" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Go Test.TestItemsServiceImpl_UpdateItem in GinAPI/services">
+    <configuration name="TestItemsServiceImpl_DeleteItem in GinAPI/services" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="GinAPI" />
-      <working_directory value="$PROJECT_DIR$/repositories" />
+      <working_directory value="$PROJECT_DIR$/services" />
       <framework value="gotest" />
       <kind value="PACKAGE" />
-      <package value="GinAPI/repositories" />
+      <package value="GinAPI/services" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTestItemsRepoImpl_DeleteItem\E$" />
+      <pattern value="^\QTestItemsServiceImpl_DeleteItem\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestItemsRepoImpl_FindItemByID in GinAPI/repositories" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestItemsServiceImpl_FindAllItem in GinAPI/services" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="GinAPI" />
-      <working_directory value="$PROJECT_DIR$/repositories" />
+      <working_directory value="$PROJECT_DIR$/services" />
       <framework value="gotest" />
       <kind value="PACKAGE" />
-      <package value="GinAPI/repositories" />
+      <package value="GinAPI/services" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTestItemsRepoImpl_FindItemByID\E$" />
-      <method v="2" />
-    </configuration>
-    <configuration name="TestItemsRepoImpl_UpdateItem in GinAPI/repositories" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="GinAPI" />
-      <working_directory value="$PROJECT_DIR$/repositories" />
-      <framework value="gotest" />
-      <kind value="PACKAGE" />
-      <package value="GinAPI/repositories" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTestItemsRepoImpl_UpdateItem\E$" />
+      <pattern value="^\QTestItemsServiceImpl_FindAllItem\E$" />
       <method v="2" />
     </configuration>
     <configuration name="TestItemsServiceImpl_FindItemByID in GinAPI/services" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
@@ -111,7 +98,7 @@
       <pattern value="^\QTestItemsServiceImpl_FindItemByID\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestItemsServiceImpl_FindItemByID/Should_return_data in GinAPI/services" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestItemsServiceImpl_InsertItem in GinAPI/services" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="GinAPI" />
       <working_directory value="$PROJECT_DIR$/services" />
       <framework value="gotest" />
@@ -119,16 +106,27 @@
       <package value="GinAPI/services" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTestItemsServiceImpl_FindItemByID\E$/^\QShould_return_data\E$" />
+      <pattern value="^\QTestItemsServiceImpl_InsertItem\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestItemsServiceImpl_UpdateItem in GinAPI/services" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="GinAPI" />
+      <working_directory value="$PROJECT_DIR$/services" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="GinAPI/services" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTestItemsServiceImpl_UpdateItem\E$" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Test.TestItemsServiceImpl_FindItemByID/Should_return_data in GinAPI/services" />
+        <item itemvalue="Go Test.TestItemsServiceImpl_UpdateItem in GinAPI/services" />
+        <item itemvalue="Go Test.TestItemsServiceImpl_InsertItem in GinAPI/services" />
+        <item itemvalue="Go Test.TestItemsServiceImpl_DeleteItem in GinAPI/services" />
+        <item itemvalue="Go Test.TestItemsServiceImpl_FindAllItem in GinAPI/services" />
         <item itemvalue="Go Test.TestItemsServiceImpl_FindItemByID in GinAPI/services" />
-        <item itemvalue="Go Test.TestItemsRepoImpl_FindItemByID in GinAPI/repositories" />
-        <item itemvalue="Go Test.TestItemsRepoImpl_DeleteItem in GinAPI/repositories" />
-        <item itemvalue="Go Test.TestItemsRepoImpl_UpdateItem in GinAPI/repositories" />
       </list>
     </recent_temporary>
   </component>

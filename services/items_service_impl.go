@@ -15,8 +15,8 @@ func CreateItemsService(itemsRepo repositories.ItemsRepo) ItemsService {
 	return &ItemsServiceImpl{itemsRepo}
 }
 
-func (i ItemsServiceImpl) FindAllItem() (*[]models.Items, error) {
-	return i.itemsRepo.FindAllItem()
+func (i ItemsServiceImpl) FindAllItem(arg models.ListItemsParams) (*[]models.Items, error) {
+	return i.itemsRepo.FindAllItem(arg)
 }
 
 func (i ItemsServiceImpl) FindItemByID(itemID int64) (*models.Items, error) {

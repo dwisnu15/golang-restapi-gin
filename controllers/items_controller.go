@@ -30,13 +30,27 @@ func InitItemsController(r *gin.Engine, itemsService service.ItemsService) {
 	api.DELETE("/items/:id", itemsController.deleteItemById)//tested
 	api.PATCH("/items/:id", itemsController.patchItem)//tested
 }
+
 func (e *ItemsController) listAllItems(c *gin.Context) {
-	listitems, err := e.itemsService.FindAllItem()
+	var req models.ListItemsRequest
+	if err := c.ShouldBindQuery(&req); err != nil {
+		util.HandleFailure(c, http.StatusBadRequest, constants.SubmitDataErr)
+		return
+	}
+
+	arg := models.ListItemsParams{
+		Limit: req.PageSize,
+		Offset: (req.PageID - 1) * req.PageSize,
+	}
+
+	listItems, err := e.itemsService.FindAllItem(arg)
 	if err != nil {
 		util.HandleFailure(c, http.StatusInternalServerError, constants.ServerError)
 		return
 	}
-	util.HandleSuccessWithData(c, listitems)
+
+	util.HandleSuccessWithData(c, listItems)
+
 }
 
 //tested, works fine

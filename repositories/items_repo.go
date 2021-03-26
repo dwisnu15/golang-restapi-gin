@@ -3,7 +3,7 @@ package repositories
 import "GinAPI/models"
 
 type ItemsRepo interface {
-	FindAllItem() (*[]models.Items, error)
+	FindAllItem(params models.ListItemsParams) (*[]models.Items, error)
 	FindItemByID(itemID int64) (*models.Items, error)
 	InsertItem(newItem *models.CreateItemInput) bool
 	UpdateItem(itemID int64, update *models.UpdateItemInput) bool

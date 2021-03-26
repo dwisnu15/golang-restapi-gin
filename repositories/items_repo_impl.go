@@ -19,15 +19,15 @@ func InitItemRepo(db *sql.DB) ItemsRepo {
 	return &ItemsRepoImpl{db}
 }
 
-func (i ItemsRepoImpl) FindAllItem() (*[]models.Items, error) {
+func (i ItemsRepoImpl) FindAllItem(arg models.ListItemsParams) (*[]models.Items, error) {
 	//limit item list to 20 items to prepare pagination
-	stmt, err := i.db.Prepare("SELECT * FROM items limit 20")
+	stmt, err := i.db.Prepare("SELECT * FROM items LIMIT $1 OFFSET $2")
 	if err != nil {
 		log.Error(errorResponse(err.Error()))
 		return nil, fmt.Errorf(constants.ServerError)
 	}
 
-	rows, err := stmt.Query()
+	rows, err := stmt.Query(arg.Limit, arg.Offset)
 	if err != nil {
 		log.Error(errorResponse(err.Error()))
 		return nil, fmt.Errorf(constants.ServerError)
@@ -37,7 +37,9 @@ func (i ItemsRepoImpl) FindAllItem() (*[]models.Items, error) {
 	for rows.Next() {
 		var item models.Items
 		err := rows.Scan(
-			&item.ID, &item.Name, &item.Price)
+			&item.ID,
+			&item.Name,
+			&item.Price)
 		if err != nil {
 			log.Error(errorResponse(err.Error()))
 			return nil, fmt.Errorf(constants.ServerError)
@@ -46,7 +48,12 @@ func (i ItemsRepoImpl) FindAllItem() (*[]models.Items, error) {
 	}
 	//as long as there is an open result set (rows)
 	//the underlying connection will be busy so defer close
-	defer rows.Close()
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
 
 	return &listitems, nil
 }
