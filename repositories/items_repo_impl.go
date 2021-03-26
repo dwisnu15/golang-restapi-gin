@@ -1,7 +1,6 @@
 package repositories
 
 import (
-	"GinAPI/configs"
 	"GinAPI/constants"
 	"GinAPI/models"
 	"database/sql"
@@ -53,17 +52,31 @@ func (i ItemsRepoImpl) FindAllItem() (*[]models.Items, error) {
 }
 
 func (i ItemsRepoImpl) FindItemByID(itemID int64) (*models.Items, error) {
+
+	stmt, err := i.db.Prepare("SELECT * FROM items WHERE id = $1")
+	if err != nil {
+		log.Error(errorResponse(err.Error()))
+		return nil, fmt.Errorf(constants.ServerError)
+	}
+	result, err := stmt.Query(itemID)
+	if err != nil {
+		log.Error(errorResponse(err.Error()))
+		return nil, fmt.Errorf(constants.ServerError)
+	}
 	var item models.Items
-	stmt, err := configs.DB.Prepare("SELECT * FROM items WHERE id = $1")
-	if err != nil {
-		log.Error(errorResponse(err.Error()))
-		return nil, fmt.Errorf(constants.ServerError)
+	//i could use queryrow.scan, but...
+	for result.Next() {
+		err := result.Scan(
+			&item.ID,
+			&item.Name,
+			&item.Price,
+			)
+		if err != nil {
+			log.Error(errorResponse(err.Error()))
+			return nil, fmt.Errorf(constants.ServerError)
+		}
 	}
-	err = stmt.QueryRow(itemID).Scan(&item.ID, &item.Name, &item.Price)
-	if err != nil {
-		log.Error(errorResponse(err.Error()))
-		return nil, fmt.Errorf(constants.ServerError)
-	}
+	defer result.Close()
 	return &item, nil
 }
 
@@ -86,7 +99,7 @@ func (i ItemsRepoImpl) InsertItem(newItem *models.CreateItemInput) bool {
 func (i ItemsRepoImpl) UpdateItem(id int64, update *models.UpdateItemInput) bool {
 	//mutex?
 
-	stmt, err := i.db.Prepare("UPDATE items SET name = $2, price=$3 WHERE id=$1")
+	stmt, err := i.db.Prepare("UPDATE items SET name = $2, price = $3 WHERE id = $1")
 	if err != nil {
 		log.Error(errorResponse(err.Error()))
 		return false

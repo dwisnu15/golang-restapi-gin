@@ -2,29 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0ca0186f-406a-457e-96ad-ca2c9b80611a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/repositories/items_repo_impl.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/items_service_impl.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/03222e04-5357-42aa-a550-7a96cc8ce473.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/03222e04-5357-42aa-a550-7a96cc8ce473.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/03222e04-5357-42aa-a550-7a96cc8ce473/storage_v2/_src_/database/gin_framework.Sy2o4A/schema/basic_gin.O8y9mg.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/03222e04-5357-42aa-a550-7a96cc8ce473/storage_v2/_src_/database/gin_framework.Sy2o4A/schema/basic_gin.O8y9mg.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/03222e04-5357-42aa-a550-7a96cc8ce473/storage_v2/_src_/database/gin_framework.Sy2o4A/schema/information_schema.FNRwLQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/03222e04-5357-42aa-a550-7a96cc8ce473/storage_v2/_src_/database/gin_framework.Sy2o4A/schema/information_schema.FNRwLQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/03222e04-5357-42aa-a550-7a96cc8ce473/storage_v2/_src_/database/gin_framework.Sy2o4A/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/03222e04-5357-42aa-a550-7a96cc8ce473/storage_v2/_src_/database/gin_framework.Sy2o4A/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/03222e04-5357-42aa-a550-7a96cc8ce473/storage_v2/_src_/database/gin_framework.Sy2o4A/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/03222e04-5357-42aa-a550-7a96cc8ce473/storage_v2/_src_/database/gin_framework.Sy2o4A/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/middlewares/csrfprotect.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configs/adminaccounts.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/items.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/items_controller.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middlewares/logger.go" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/logger.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middlewares/middleware.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/middlewares/recovery.go" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/recovery.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/dbsetup.go" beforeDir="false" afterPath="$PROJECT_DIR$/configs/dbconfig.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/items.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/items_model.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repositories/items_repo.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/itemsService.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/repositories/items_repo_impl.go" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/items_repo_impl.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repositories/items_repo_impl_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/items_repo_impl_test.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="with_timeout" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -85,8 +66,8 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Go Test.TestItemsRepoImpl_FindItemByID in GinAPI/repositories">
-    <configuration name="TestItemsRepoImpl_FindAllItem in GinAPI/repositories" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Go Test.TestItemsServiceImpl_FindItemByID/Should_return_data in GinAPI/services">
+    <configuration name="TestItemsRepoImpl_DeleteItem in GinAPI/repositories" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="GinAPI" />
       <working_directory value="$PROJECT_DIR$/repositories" />
       <framework value="gotest" />
@@ -94,7 +75,7 @@
       <package value="GinAPI/repositories" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTestItemsRepoImpl_FindAllItem\E$" />
+      <pattern value="^\QTestItemsRepoImpl_DeleteItem\E$" />
       <method v="2" />
     </configuration>
     <configuration name="TestItemsRepoImpl_FindItemByID in GinAPI/repositories" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
@@ -108,10 +89,46 @@
       <pattern value="^\QTestItemsRepoImpl_FindItemByID\E$" />
       <method v="2" />
     </configuration>
+    <configuration name="TestItemsRepoImpl_UpdateItem in GinAPI/repositories" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="GinAPI" />
+      <working_directory value="$PROJECT_DIR$/repositories" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="GinAPI/repositories" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTestItemsRepoImpl_UpdateItem\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestItemsServiceImpl_FindItemByID in GinAPI/services" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="GinAPI" />
+      <working_directory value="$PROJECT_DIR$/services" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="GinAPI/services" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTestItemsServiceImpl_FindItemByID\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestItemsServiceImpl_FindItemByID/Should_return_data in GinAPI/services" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="GinAPI" />
+      <working_directory value="$PROJECT_DIR$/services" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="GinAPI/services" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTestItemsServiceImpl_FindItemByID\E$/^\QShould_return_data\E$" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Test.TestItemsServiceImpl_FindItemByID/Should_return_data in GinAPI/services" />
+        <item itemvalue="Go Test.TestItemsServiceImpl_FindItemByID in GinAPI/services" />
         <item itemvalue="Go Test.TestItemsRepoImpl_FindItemByID in GinAPI/repositories" />
-        <item itemvalue="Go Test.TestItemsRepoImpl_FindAllItem in GinAPI/repositories" />
+        <item itemvalue="Go Test.TestItemsRepoImpl_DeleteItem in GinAPI/repositories" />
+        <item itemvalue="Go Test.TestItemsRepoImpl_UpdateItem in GinAPI/repositories" />
       </list>
     </recent_temporary>
   </component>
@@ -135,7 +152,8 @@
     <integration-enabled>true</integration-enabled>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/GinAPI$TestItemsRepoImpl_FindAllItem_in_GinAPI_repositories.out" NAME="TestItemsRepoImpl_FindAllItem in GinAPI/repositories Coverage Results" MODIFIED="1616545594079" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/GinAPI$TestItemsRepoImpl_FindItemByID_in_GinAPI_repositories.out" NAME="TestItemsRepoImpl_FindItemByID in GinAPI/repositories Coverage Results" MODIFIED="1616545801056" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/GinAPI$TestItemsRepoImpl_FindAllItem_in_GinAPI_repositories.out" NAME="TestItemsRepoImpl_FindAllItem in GinAPI/repositories Coverage Results" MODIFIED="1616665128177" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/GinAPI$TestItemsRepoImpl_FindItemByID_in_GinAPI_repositories.out" NAME="TestItemsRepoImpl_FindItemByID in GinAPI/repositories Coverage Results" MODIFIED="1616665142340" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/GinAPI$TestItemsRepoImpl_UpdateItem_in_GinAPI_repositories.out" NAME="TestItemsRepoImpl_UpdateItem in GinAPI/repositories Coverage Results" MODIFIED="1616665750419" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
