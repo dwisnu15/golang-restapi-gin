@@ -46,12 +46,13 @@ func TestItemsServiceImpl_FindAllItem(t *testing.T) {
 	t.Run("Find all item with limit 20, should return an array of Items if successful", func(t *testing.T) {
 		mockItemRepo := new(mockRepo.ItemsRepoMock)
 		var mockAllItem []models.Items
+		mockParams := models.ListItemsParams{Offset: 1, Limit: 5}
 		// going to insert mockItem from above
 		//so at least findall will return one Item
 		mockAllItem = append(mockAllItem, mockItem)
 		mockItemRepo.On("FindAllItem").Return(mockAllItem, nil)
 		mockService := CreateItemsService(mockItemRepo)
-		result, err := mockService.FindAllItem()
+		result, err := mockService.FindAllItem(mockParams)
 
 		assert.NotNil(t, result)
 		assert.Equal(t, len(mockAllItem), len(*result))

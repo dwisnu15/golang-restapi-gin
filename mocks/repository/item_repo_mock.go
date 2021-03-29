@@ -11,7 +11,7 @@ type ItemsRepoMock struct {
 	mock.Mock
 }
 //i have not yet understand how this works
-func (m *ItemsRepoMock) FindAllItem() (*[]models.Items, error) {
+func (m *ItemsRepoMock) FindAllItem(params models.ListItemsParams) (*[]models.Items, error) {
 
 	ret := m.Called()
 

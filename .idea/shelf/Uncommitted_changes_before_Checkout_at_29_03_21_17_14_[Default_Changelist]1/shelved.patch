@@ -1,0 +1,91 @@
+Index: util/password/passgenerator.go
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package password\n
+===================================================================
+diff --git a/util/password/passgenerator.go b/util/password/passgenerator.go
+--- a/util/password/passgenerator.go	
++++ b/util/password/passgenerator.go	
+@@ -1,1 +1,60 @@
+ package password
++
++import (
++	"crypto/rand"
++	"encoding/base64"
++	"math/big"
++)
++
++const addedKey = "bafdio"
++
++type PwdGenerator interface {
++	GenerateRandomBytes(i int) ([]byte, error)
++	GeneratePassword() (*Password, error)
++	CheckPassword() error
++}
++
++type Password struct {
++	EncodedPassword string `json:"encoded_password"`
++}
++
++//generate random bytes so password will have random length
++//downside : no minimum length so the created password may be weak
++func GenerateRandomBytes() ([]byte, error) {
++	//create random big int
++	random, err := rand.Int(rand.Reader, big.NewInt(36))
++	if err != nil {
++		return nil, err
++	}
++	//probably dangerous
++	//cast big int to int64 (they aren't the same?)
++	randNum := random.Int64()
++	randBytes := make([]byte, randNum)
++	_, err = rand.Read(randBytes)
++	if err != nil {
++		return nil, err
++	}
++	return randBytes, nil
++}
++
++//generate password
++//much faster than its alternate
++//about 1008.1 throughput/s
++//func GeneratePassword() (string, error) {
++//	//create random bytes
++//	randByte, err := GenerateRandomBytes()
++//
++//	//then encode the resulting bytes to string encoded from base64
++//	return base64.URLEncoding.EncodeToString(randByte), err
++//}
++
++//alternate generate password
++//774.6 throughput/s
++func GeneratePassword() (*Password, error) {
++	//create random bytes
++	randByte, err := GenerateRandomBytes()
++
++	//then encode the resulting bytes to string encoded from base64
++	return &Password{EncodedPassword: base64.URLEncoding.EncodeToString(randByte)}, err
++}
++
+Index: inject.go
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package main\n\nimport (\n\tcontroller \"GinAPI/controllers\"\n\t\"GinAPI/repositories\"\n\tservice \"GinAPI/services\"\n\t\"database/sql\"\n\t\"github.com/gin-gonic/gin\"\n)\n\nfunc inject(db *sql.DB) (*gin.Engine, error) {\n\titemRepository := repositories.InitItemRepo(db)\n\titemService := service.CreateItemsService(itemRepository)\n\n\titemController, err := controller.InitItemsController(itemService)\n\tif err != nil {\n\t\treturn nil, err\n\t}\n\trouter, err := itemController.SetupRouter()\n\tif err != nil {\n\t\treturn nil, err\n\t}\n\treturn router, nil\n\n}\n
+===================================================================
+diff --git a/inject.go b/inject.go
+--- a/inject.go	
++++ b/inject.go	
+@@ -21,5 +21,13 @@
+ 		return nil, err
+ 	}
+ 	return router, nil
++}
+ 
++func passInject()(*gin.Engine, error) {
++	passController := controller.PasswordController{}
++	router, err := passController.SetRouterPass()
++	if err != nil {
++		return nil, err
++	}
++	return router, nil
+ }
