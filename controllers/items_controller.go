@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"GinAPI/constants"
+	"GinAPI/middlewares"
 	"GinAPI/models"
 	service "GinAPI/services"
 	"GinAPI/util"
@@ -17,21 +18,34 @@ import (
 //..should it? currently use boolean to determine
 //whether statement is successful or failed
 
-type ItemsController struct {
-	itemsService service.ItemsService
+type itemsController struct {
+	service service.ItemsService
+	router *gin.Engine
+	//tokenGen
 }
 
-func InitItemsController(r *gin.Engine, itemsService service.ItemsService) {
-	itemsController := ItemsController{itemsService}
-	api := r.Group("/api")
-	api.GET("/items", itemsController.listAllItems)//tested
-	api.GET("/items/:id", itemsController.findItemById)//tested
-	api.POST("/items", itemsController.insertItem)//tested
-	api.DELETE("/items/:id", itemsController.deleteItemById)//tested
-	api.PATCH("/items/:id", itemsController.patchItem)//tested
+func (itemsContr *itemsController) SetupRouter() (*gin.Engine, error)  {
+	r := gin.Default()
+	itemsContr.router = r
+	itemsContr.router.Use(middlewares.LoggerToFile())
+	api := itemsContr.router.Group("/api")
+	api.GET("/items", itemsContr.listAllItems)          //tested
+	api.GET("/items/:id", itemsContr.findItemById)      //tested
+	api.POST("/items", itemsContr.insertItem)           //tested
+	api.DELETE("/items/:id", itemsContr.deleteItemById) //tested
+	api.PATCH("/items/:id", itemsContr.patchItem)       //tested
+	return itemsContr.router, nil
 }
 
-func (e *ItemsController) listAllItems(c *gin.Context) {
+func InitItemsController(itemsService service.ItemsService) (*itemsController, error) {
+	controller := &itemsController{
+		service: itemsService,
+	}
+	//controller.SetupRouter()
+	return controller, nil
+}
+
+func (itemsContr *itemsController) listAllItems(c *gin.Context) {
 	var req models.ListItemsRequest
 	if err := c.ShouldBindQuery(&req); err != nil {
 		util.HandleFailure(c, http.StatusBadRequest, constants.SubmitDataErr)
@@ -43,22 +57,21 @@ func (e *ItemsController) listAllItems(c *gin.Context) {
 		Offset: (req.PageID - 1) * req.PageSize,
 	}
 
-	listItems, err := e.itemsService.FindAllItem(arg)
+	listItems, err := itemsContr.service.FindAllItem(arg)
 	if err != nil {
 		util.HandleFailure(c, http.StatusInternalServerError, constants.ServerError)
 		return
 	}
 
 	util.HandleSuccessWithData(c, listItems)
-
 }
 
 //tested, works fine
 //this will be used on FindById, PatchItem, and DeleteItem
-func (e *ItemsController) findItem(c *gin.Context) (*models.Items, error) {
+func (itemsContr *itemsController) findItem(c *gin.Context) (*models.Items, error) {
 	var item *models.Items
 	id := util.GetInt64IdFromContext(c)
-	item, err := e.itemsService.FindItemByID(id)
+	item, err := itemsContr.service.FindItemByID(id)
 	if err != nil {
 		return nil, err
 	}
@@ -66,8 +79,8 @@ func (e *ItemsController) findItem(c *gin.Context) (*models.Items, error) {
 }
 
 //same as findItem, works fine
-func (e *ItemsController) findItemById(c *gin.Context) {
-	finditem, err := e.findItem(c)
+func (itemsContr *itemsController) findItemById(c *gin.Context) {
+	finditem, err := itemsContr.findItem(c)
 	if err != nil {
 		if err == sql.ErrNoRows {
 			//hit api success BUT the entity is nonexistent, so we should return status 200
@@ -81,7 +94,7 @@ func (e *ItemsController) findItemById(c *gin.Context) {
 	util.HandleSuccessWithData(c, finditem)
 }
 
-func (e *ItemsController) insertItem(c *gin.Context) {
+func (itemsContr *itemsController) insertItem(c *gin.Context) {
 	var insert *models.CreateItemInput
 
 	//body, _ := ioutil.ReadAll(c.Request.Body)
@@ -90,7 +103,7 @@ func (e *ItemsController) insertItem(c *gin.Context) {
 		util.HandleFailure(c, http.StatusBadRequest, constants.RequiredFields)
 		return
 	}
-	insertSuccess := e.itemsService.InsertItem(insert)
+	insertSuccess := itemsContr.service.InsertItem(insert)
 	if !insertSuccess {
 		util.HandleFailure(c, http.StatusInternalServerError, constants.ServerError)
 		return
@@ -103,10 +116,10 @@ func (e *ItemsController) insertItem(c *gin.Context) {
 //}
 
 //really bad code (but works)
-func (e *ItemsController) patchItem(c *gin.Context) {
+func (itemsContr *itemsController) patchItem(c *gin.Context) {
 	//find the item first
 	var item *models.Items
-	item, err := e.findItem(c)
+	item, err := itemsContr.findItem(c)
 	if err != nil {
 		if err == sql.ErrNoRows {
 			c.JSON(http.StatusNotFound, constants.DataNotFound)
@@ -134,7 +147,7 @@ func (e *ItemsController) patchItem(c *gin.Context) {
 	}
 	//this will probably never return "missing fields" error
 	//because of the field checking above
-	result := e.itemsService.UpdateItem(item.ID, input)
+	result := itemsContr.service.UpdateItem(item.ID, input)
 	if !result {
 		util.HandleFailure(c, http.StatusBadRequest, constants.UpdateError)
 		return
@@ -149,10 +162,10 @@ func (e *ItemsController) patchItem(c *gin.Context) {
 	//JSON -> {"name": "Bean"}, then the price shall be item.price
 }
 
-func (e *ItemsController) deleteItemById(c *gin.Context) {
+func (itemsContr *itemsController) deleteItemById(c *gin.Context) {
 	//find the to-be-deleted data's id
 	id := util.GetInt64IdFromContext(c)
-	result:= e.itemsService.DeleteItem(id)
+	result:= itemsContr.service.DeleteItem(id)
 	if !result {
 		util.HandleFailure(c, http.StatusInternalServerError, constants.ServerError)
 		return

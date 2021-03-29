@@ -9,6 +9,9 @@ const (
 	ServerError     = "something is wrong in the server"
 	UpdateError = "update data failed"
 	SubmitDataErr = "error on submitted data"
+	ExpiredToken = "token has expired"
+	InvalidToken = "token is invalid"
+	InvalidTokenSize = "invalid key size:"
 )
 
 const (

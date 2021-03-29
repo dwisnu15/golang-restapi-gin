@@ -2,32 +2,59 @@ package main
 
 import (
 	"GinAPI/configs"
-	repository "GinAPI/repositories"
-	controller "GinAPI/controllers"
-	service "GinAPI/services"
-	"GinAPI/middlewares"
-	"fmt"
-	"github.com/gin-gonic/gin"
+	"context"
 	log "github.com/sirupsen/logrus"
+	"net/http"
 	"os"
+	"os/signal"
+	"syscall"
 	"time"
 )
 
 func main() {
-	//print current date and time
-	os.Setenv("TZ", "Asia/Jakarta")
-	fmt.Printf("Started at : %3v \n", time.Now())
-
 	db :=configs.InitDBConnection()
-	itemsRepo := repository.InitItemRepo(db)
-	itemsService := service.CreateItemsService(itemsRepo)
-
-	router := gin.Default()
-	router.Use(middlewares.Logger())
-	controller.InitItemsController(router, itemsService)
-	err := router.Run(":8080")
+	router, err := inject(db)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("Failed injecting router: %v\n", err)
+	}
+
+	srv := &http.Server{
+		Addr: ":8080",
+		Handler: router,
+	}
+	if err := srv.ListenAndServe(); err != nil {
+		log.Fatalf("%v\n", err)
+	}
+	// Retrieved from Graceful server shutdown - https://github.com/gin-gonic/examples/blob/master/graceful-shutdown/graceful-shutdown/server.go
+	go func() {
+		if err := srv.ListenAndServe(); err != nil {
+			log.Fatalf("Failed to initialize server: %v\n", err)
+		}
+	}()
+	log.Printf("Listening on port %v\n", srv.Addr)
+
+	//create kill signal of channel
+	stopServer := make(chan os.Signal, 1)
+
+	signal.Notify(stopServer, syscall.SIGINT, syscall.SIGTERM)
+
+	//blocks until a signal is sent to stop server channel
+	<-stopServer
+
+	//inform context that it has 7 seconds to finish
+	//handling received request
+	ctx, cancel := context.WithTimeout(context.Background(), 7*time.Second)
+	defer cancel()
+
+
+	//shut down database source
+	if err := db.Close(); err != nil {
+		log.Fatalf("Shutting down db on problem: %v\n", err)
+	}
+
+	//shutdown api (server)
+	if err := srv.Shutdown(ctx); err != nil {
+		log.Fatalf("Server forced to shutdown: %v\n", err)
 	}
 
 }

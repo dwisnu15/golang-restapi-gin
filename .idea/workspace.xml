@@ -2,8 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0ca0186f-406a-457e-96ad-ca2c9b80611a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mocks/service/item_service_mock.go" beforeDir="false" afterPath="$PROJECT_DIR$/mocks/service/item_service_mock.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/constants/responsemsg.go" beforeDir="false" afterPath="$PROJECT_DIR$/constants/responsemsg.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/items_controller.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/items_controller.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middlewares/csrfprotect.go" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/csrfprotect.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middlewares/logger.go" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/logger.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,7 +22,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Go Application" />
+        <option value="JavaScript File" />
         <option value="Go File" />
+        <option value="package.json" />
       </list>
     </option>
   </component>
@@ -49,11 +59,15 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="javascript.nodejs.core.library.configured.version" value="14.15.4" />
+    <property name="javascript.nodejs.core.library.typings.version" value="14.14.37" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Repo/others/e-wallet-simple-api" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/query" />
       <recent name="$PROJECT_DIR$/configs" />
     </key>
   </component>
@@ -64,7 +78,59 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Go Test.TestItemsServiceImpl_UpdateItem in GinAPI/services">
+  <component name="RunManager" selected="Go App Engine.run api">
+    <configuration default="true" type="GoAppEngineRunConfiguration" factoryName="Go App Engine">
+      <module name="GinAPI" />
+      <working_directory value="$PROJECT_DIR$" />
+      <parameters value="go run main.go inject.go" />
+      <EXTENSION ID="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" />
+        </ENTRIES>
+      </EXTENSION>
+      <method v="2" />
+    </configuration>
+    <configuration name="run api" type="GoAppEngineRunConfiguration" factoryName="Go App Engine">
+      <module name="GinAPI" />
+      <working_directory value="$PROJECT_DIR$" />
+      <parameters value="go run main.go inject.go" />
+      <EXTENSION ID="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" />
+        </ENTRIES>
+      </EXTENSION>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="GinAPI" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <EXTENSION ID="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" />
+        </ENTRIES>
+      </EXTENSION>
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$" />
+      <package value="GinAPI" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
     <configuration name="TestItemsServiceImpl_DeleteItem in GinAPI/services" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="GinAPI" />
       <working_directory value="$PROJECT_DIR$/services" />
@@ -90,6 +156,16 @@
     <configuration name="TestItemsServiceImpl_FindItemByID in GinAPI/services" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="GinAPI" />
       <working_directory value="$PROJECT_DIR$/services" />
+      <EXTENSION ID="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" />
+        </ENTRIES>
+      </EXTENSION>
       <framework value="gotest" />
       <kind value="PACKAGE" />
       <package value="GinAPI/services" />
@@ -101,6 +177,16 @@
     <configuration name="TestItemsServiceImpl_InsertItem in GinAPI/services" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="GinAPI" />
       <working_directory value="$PROJECT_DIR$/services" />
+      <EXTENSION ID="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" />
+        </ENTRIES>
+      </EXTENSION>
       <framework value="gotest" />
       <kind value="PACKAGE" />
       <package value="GinAPI/services" />
@@ -112,6 +198,16 @@
     <configuration name="TestItemsServiceImpl_UpdateItem in GinAPI/services" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="GinAPI" />
       <working_directory value="$PROJECT_DIR$/services" />
+      <EXTENSION ID="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" />
+        </ENTRIES>
+      </EXTENSION>
       <framework value="gotest" />
       <kind value="PACKAGE" />
       <package value="GinAPI/services" />
@@ -120,6 +216,14 @@
       <pattern value="^\QTestItemsServiceImpl_UpdateItem\E$" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Go App Engine.run api" />
+      <item itemvalue="Go Test.TestItemsServiceImpl_DeleteItem in GinAPI/services" />
+      <item itemvalue="Go Test.TestItemsServiceImpl_FindAllItem in GinAPI/services" />
+      <item itemvalue="Go Test.TestItemsServiceImpl_FindItemByID in GinAPI/services" />
+      <item itemvalue="Go Test.TestItemsServiceImpl_InsertItem in GinAPI/services" />
+      <item itemvalue="Go Test.TestItemsServiceImpl_UpdateItem in GinAPI/services" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Go Test.TestItemsServiceImpl_UpdateItem in GinAPI/services" />

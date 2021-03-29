@@ -52,6 +52,7 @@ func LoggerToFile() gin.HandlerFunc {
 	//Format log
 	logger.SetFormatter(&log.TextFormatter{
 		TimestampFormat:"2006-01-02 15:04:05",
+		FullTimestamp: true,
 	})
 	return func(c *gin.Context) {
 		// start time
@@ -69,11 +70,13 @@ func LoggerToFile() gin.HandlerFunc {
 		// Status code
 		statusCode := c.Writer.Status()
 		// Log format
-		logger.Infof("| %3d | %13v | %s | %s |",
+		logger.Infof("| %3d | Execution time: %v | %s | %s | %v | %v",
 			statusCode,
 			latencyTime,
 			reqMethod,
 			reqUri,
+			startTime,
+			endTime,
 		)
 	}
 }

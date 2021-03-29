@@ -7,7 +7,6 @@ import "github.com/gin-gonic/gin"
 const (
 	CSRFToken = "X-CSRF-Token"
 	CSRFKey = "csrf" //used as secret key
-
 )
 
 //Cross Site Request Forgery
