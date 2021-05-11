@@ -23,3 +23,15 @@ func inject(db *sql.DB) (*gin.Engine, error) {
 	return router, nil
 
 }
+
+func injectPassGenerator() (*gin.Engine, error) {
+	pCon, err := controller.NewPasswordController()
+	if err != nil {
+		return nil, err
+	}
+	router, err := pCon.SetupRouter()
+	if err != nil {
+		return nil, err
+	}
+	return router, nil
+}

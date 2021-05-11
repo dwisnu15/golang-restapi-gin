@@ -13,28 +13,25 @@ import (
 	"net/http"
 )
 
-//insert, update should return the resulting row,
-//so queries should add RETURNING [value] suffix
-//..should it? currently use boolean to determine
-//whether statement is successful or failed
-
 type itemsController struct {
 	service service.ItemsService
-	router *gin.Engine
+	router  *gin.Engine
 	//tokenGen
 }
 
-func (itemsContr *itemsController) SetupRouter() (*gin.Engine, error)  {
+func (itemsContr *itemsController) SetupRouter() (*gin.Engine, error) {
+	//if another entity exists, change this router instance
 	r := gin.Default()
 	itemsContr.router = r
 	itemsContr.router.Use(middlewares.LoggerToFile())
+
 	api := itemsContr.router.Group("/api")
 	api.GET("/items", itemsContr.listAllItems)          //tested
 	api.GET("/items/:id", itemsContr.findItemById)      //tested
 	api.POST("/items", itemsContr.insertItem)           //tested
 	api.DELETE("/items/:id", itemsContr.deleteItemById) //tested
 	api.PATCH("/items/:id", itemsContr.patchItem)       //tested
-	return itemsContr.router, nil
+	return r, nil
 }
 
 func InitItemsController(itemsService service.ItemsService) (*itemsController, error) {
@@ -53,7 +50,7 @@ func (itemsContr *itemsController) listAllItems(c *gin.Context) {
 	}
 
 	arg := models.ListItemsParams{
-		Limit: req.PageSize,
+		Limit:  req.PageSize,
 		Offset: (req.PageID - 1) * req.PageSize,
 	}
 
@@ -137,7 +134,7 @@ func (itemsContr *itemsController) patchItem(c *gin.Context) {
 		return
 	}
 	//check whether one of request body field is nil
-	if input.Name == ""  {
+	if input.Name == "" {
 		log.Info("entered input name checking")
 		input.Name = item.Name
 	}
@@ -165,7 +162,7 @@ func (itemsContr *itemsController) patchItem(c *gin.Context) {
 func (itemsContr *itemsController) deleteItemById(c *gin.Context) {
 	//find the to-be-deleted data's id
 	id := util.GetInt64IdFromContext(c)
-	result:= itemsContr.service.DeleteItem(id)
+	result := itemsContr.service.DeleteItem(id)
 	if !result {
 		util.HandleFailure(c, http.StatusInternalServerError, constants.ServerError)
 		return

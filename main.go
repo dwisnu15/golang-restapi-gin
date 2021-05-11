@@ -1,7 +1,7 @@
 package main
 
 import (
-	"GinAPI/configs"
+	"GinAPI/configs/dbconfig"
 	"context"
 	log "github.com/sirupsen/logrus"
 	"net/http"
@@ -12,14 +12,14 @@ import (
 )
 
 func main() {
-	db :=configs.InitDBConnection()
+	db := dbconfig.InitDBConnection()
 	router, err := inject(db)
 	if err != nil {
 		log.Fatalf("Failed injecting router: %v\n", err)
 	}
 
 	srv := &http.Server{
-		Addr: ":8080",
+		Addr:    ":8080",
 		Handler: router,
 	}
 	if err := srv.ListenAndServe(); err != nil {
@@ -46,7 +46,6 @@ func main() {
 	ctx, cancel := context.WithTimeout(context.Background(), 7*time.Second)
 	defer cancel()
 
-
 	//shut down database source
 	if err := db.Close(); err != nil {
 		log.Fatalf("Shutting down db on problem: %v\n", err)
@@ -58,27 +57,3 @@ func main() {
 	}
 
 }
-
-////initPostgres
-//models.InitGormPostgres()
-//defer models.DB.Close()
-//
-////set router with gin
-//gin.SetMode(gin.ReleaseMode)
-//router := gin.Default()
-//
-////setup route group for the api
-//api := router.Group("/api")
-//
-////find all
-//api.GET("/items", controllers.FindAllItems)
-////find by id
-//api.GET("/items/:id", controllers.FindItemById)
-////create new item
-//api.POST("/items", controllers.AddItemsInput)
-////update item
-//api.PATCH("/items/:id", controllers.UpdateItem)
-////delete item
-//api.DELETE("/items/:id", controllers.DeleteItem)
-////start server on port 8080
-//router.Run(":8080")

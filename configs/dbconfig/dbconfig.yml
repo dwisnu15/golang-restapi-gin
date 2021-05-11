@@ -1,0 +1,18 @@
+server:
+  port: 8080
+
+#database:
+#  engine: "mongodb"
+#  host: "localhost"
+#  port: 27017
+#  name: "gin_framework"
+#  user: "testadmin"
+#  password: "enigma"
+
+database:
+  engine: "postgres"
+  host: "localhost"
+  port: 5432
+  name: "gin_framework"
+  user: "testadmin"
+  password: "enigma"

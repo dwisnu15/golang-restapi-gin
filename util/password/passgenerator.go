@@ -11,7 +11,7 @@ type Password struct {
 }
 
 type PwdGenerator interface {
-	GenerateRandomByte()([]byte, error)
+	GenerateRandomByte() ([]byte, error)
 	GeneratePassword() (string, error)
 }
 
@@ -28,7 +28,14 @@ func GenerateRandomByte() ([]byte, error) {
 	return b, nil
 }
 
-func  GeneratePassword() (string, error) {
+func GeneratePassword() (string, error) {
 	b, err := GenerateRandomByte()
 	return base64.URLEncoding.EncodeToString(b), err
 }
+
+// func GeneratePassword() (*Password, error) {
+// 	b, err := GenerateRandomByte()
+// 	return &Password{
+// 		EncodedPassword : base64.URLEncoding.EncodeToString(b)
+// 	}, err
+// }

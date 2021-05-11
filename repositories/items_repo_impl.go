@@ -70,6 +70,7 @@ func (i ItemsRepoImpl) FindItemByID(itemID int64) (*models.Items, error) {
 		log.Error(errorResponse(err.Error()))
 		return nil, fmt.Errorf(constants.ServerError)
 	}
+	defer result.Close()
 	var item models.Items
 	//i could use queryrow.scan, but...
 	for result.Next() {
@@ -77,18 +78,18 @@ func (i ItemsRepoImpl) FindItemByID(itemID int64) (*models.Items, error) {
 			&item.ID,
 			&item.Name,
 			&item.Price,
-			)
+		)
 		if err != nil {
 			log.Error(errorResponse(err.Error()))
 			return nil, fmt.Errorf(constants.ServerError)
 		}
 	}
-	defer result.Close()
+
 	return &item, nil
 }
 
 func (i ItemsRepoImpl) InsertItem(newItem *models.CreateItemInput) bool {
-	insertStmt,err := i.db.Prepare("INSERT INTO items(name, price) VALUES ($1, $2)")
+	insertStmt, err := i.db.Prepare("INSERT INTO items(name, price) VALUES ($1, $2)")
 	if err != nil {
 		log.Error(errorResponse(err.Error()))
 		return false
@@ -101,6 +102,7 @@ func (i ItemsRepoImpl) InsertItem(newItem *models.CreateItemInput) bool {
 	}
 	return true
 }
+
 //i cannot yet impl patch request so
 //put request
 func (i ItemsRepoImpl) UpdateItem(id int64, update *models.UpdateItemInput) bool {
@@ -118,8 +120,6 @@ func (i ItemsRepoImpl) UpdateItem(id int64, update *models.UpdateItemInput) bool
 	}
 	return true
 }
-
-
 
 func (i ItemsRepoImpl) DeleteItem(itemID int64) bool {
 	//find the to-be-deleted data's id
@@ -148,7 +148,7 @@ func errorResponse(message string) string {
 		return "No caller"
 	}
 
-	caller := runtime.FuncForPC(fpcs[0]-1)
+	caller := runtime.FuncForPC(fpcs[0] - 1)
 	if caller == nil {
 		return "Caller was nil"
 	}
@@ -157,5 +157,3 @@ func errorResponse(message string) string {
 	response.WriteString(message)
 	return response.String()
 }
-
-

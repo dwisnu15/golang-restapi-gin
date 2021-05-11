@@ -1,16 +1,15 @@
-package configs
+package dbconfig
 
 //this file concerns setting up the database connection
 import (
+	"GinAPI/configs"
 	"database/sql"
 	"fmt"
-	_ "github.com/jinzhu/gorm/dialects/postgres"
 	_ "github.com/lib/pq"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 	"os"
 )
-
 
 //should you turn this into env?
 //i used viper for configurations, works well
@@ -23,22 +22,22 @@ import (
 //)
 
 //var GormDB *gorm.DB
+
 var DB *sql.DB
 
 func InitViperConfig() {
-
 	//get config file path
 	path, err := os.Getwd()
 	if err != nil {
 		panic(err)
 	}
+	//set path to look for config file (in: GinAPI)
 	viper.AddConfigPath(path + "/configs")
 	//set the file name of config file
 	viper.SetConfigName("dbconfig")
-	//set path to look for config file (in: GinAPI)
 
 	viper.SetConfigType("yml")
-	var configurations Configurations
+	var configurations configs.Configurations
 
 	if err := viper.ReadInConfig(); err != nil {
 		log.Fatalf("Error reading config file, %s", err)
